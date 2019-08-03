@@ -27,15 +27,25 @@ public class NewServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        int firstNumber = Integer.parseInt(request.getParameter("primerNumero"));
+        int secondNumber = Integer.parseInt(request.getParameter("segundoNumero"));
+        
+        Calculadora calculadora = new Calculadora();
+        int resultado = calculadora.sumar(firstNumber, secondNumber);
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");            
+            out.println("<title>Servlet NewServlet</title>");    
+            out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Primer servlet de PrograII </h1>");
+            out.println("<h1>Resultado de suma es :" + resultado + "</h1>");
+            out.println(" <button type=\"button\" value='Regresar' class=\"btn btn-warning\">Warning</button>");
             out.println("</body>");
             out.println("</html>");
         }
