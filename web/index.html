@@ -5,27 +5,87 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
     <body>
+        <script>
+            $(document).ready(function(){
+                $("#btnGuardar").click(function(){
+                    //alert("Ejemplo de jQuery")
+                    $("#txtDPI").focus();
+                })
+                
+                $("#txtNombre").focusout(function(){
+                    //alert($("#txtNombre").val());
+                });
+                
+                $("#txtApellido").focusout(function(){
+                    var nombre = $.trim($("#txtNombre").val());
+                    var apellido = $.trim($("#txtApellido").val());
+                    var usuario = nombre+apellido;
+                    $("#txtUsuario").val(usuario);
+                    $("#txtCorreo").focus();
+                });
+                
+                $("#btnMostrar").click(function(){
+                    //$("#mensaje").show();
+                    $("#mensaje").fadeIn(1000);
+                })
+                
+                $("#btnOcultar").click(function(){
+                    //$("#mensaje").remove();
+                    //$("#mensaje").hide();
+                   // $("#mensaje").fadeOut(1000);
+                })
+                
+                $("#btnAgregarElemento").click(function(){
+                    var elemento = '<input type="text" id="1">';
+                    
+                    $("#form1").append(elemento);
+                });
+                
+                $("#btnEliminarElemento").click(function(){
+                    //$("input > text").remove();
+                    $("input").remove();
+                });
+                
+                
+            });            
+        </script>
     <center>
         <div style="width: 60%;">
         <div>PROGRAMACION II - CLASE 1</div>
-            <form action="NewServlet" method="post" >
+        
+        <div class="alert alert-success" id="mensaje" role="alert" style="display: none;" >
+            Progra II con jQuery!
+        </div>
+            <form action="NewServlet" id="form1" method="post" >
+                <label>Ingrese DPI</label><br> 
+                <input type="text" id="txtDPI" class="form-control"/><br><br>
                 
-                <label>Ingrese primer numero</label><br>                
-                <input type="number" name="primerNumero" placeholder="Ingrese numero" class="form-control"/> <br> <br>
+                <label>Ingrese NOmbre</label><br>                
+                <input type="text" id="txtNombre" name="primerNumero" placeholder="Ingrese numero" class="form-control"/> <br> <br>
                 
-                <label>Ingrese primer numero</label><br>
-                <input type="number" name="segundoNumero"  placeholder="Ingrese numero"  class="form-control"/><br><br>
+                <label>Ingrese Apellido</label><br>
+                <input type="text" id="txtApellido" name="apellido"  placeholder="Ingrese numero"  class="form-control"/><br><br>
                 
-            <input type="text"class="form-control"/><br><br>
-            <input type="text"class="form-control"/><br><br>
-            <input type="text"class="form-control"/><br><br>
-            <input type="button" class="btn btn-primary" value="Guardar">
-            <button type="button" class="btn btn-warning">Warning</button>
+                <label>Usuario</label><br>
+                <input type="text" id="txtUsuario" name="usuario"  placeholder="usuario"  class="form-control"/><br><br>
+                 
+            
+            <input type="button" id="btnGuardar" class="btn btn-primary" value="Guardar">
             <input type="submit" class="btn btn-primary" value="Guardar y Enviar">
+            
+            <input type="button" id="btnMostrar" class="btn btn-dark" value="Mostrar Elemento">
+            
+            <input type="button" id="btnOcultar" class="btn btn-dark" value="Ocultar Elemento">
+            
+            <input type="button" id="btnAgregarElemento" class="btn btn-dark" value="Agregar Elemento">
+            
+            
             </form>
             </div>
+        <button id="btnEliminarElemento" class="btn btn-dark" >Eliminar Elemento</button>
     </center>
         </body>
     
