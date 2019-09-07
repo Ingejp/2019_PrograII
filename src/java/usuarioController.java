@@ -12,8 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/NewServlet"})
-public class NewServlet extends HttpServlet {
+/**
+ *
+ * @author CB090828
+ */
+@WebServlet(urlPatterns = {"/usuarioController"})
+public class usuarioController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -28,34 +32,23 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int firstNumber = Integer.parseInt(request.getParameter("primerNumero"));
+         int firstNumber = Integer.parseInt(request.getParameter("primerNumero"));
         int secondNumber = Integer.parseInt(request.getParameter("segundoNumero"));
         
         Calculadora calculadora = new Calculadora();
         int resultado = calculadora.sumar(firstNumber, secondNumber);
         
-        if(resultado>100){
-            response.getWriter().println("<h1>El resultado de mayor a 100 : " + resultado+"</h1>");
-        }else{
-            response.getWriter().println("<h1>El resultado de menor a 100 : " + resultado+"</h1>");
-        }
-        
-        //response.getWriter().println(resultado);
-        
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. 
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NewServlet</title>");    
-            out.println("<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">");
+            out.println("<title>Servlet usuarioController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Primer servlet de PrograII </h1>");
-            out.println("<h1>Resultado de suma es :" + resultado + "</h1>");
-            out.println(" <button type=\"button\" value='Regresar' class=\"btn btn-warning\">Warning</button>");
+            out.println("<h1>Servlet usuarioController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
-            out.println("</html>");*/
+            out.println("</html>");
         }
     }
 
