@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import Herencia.FiguraGeometricaPlana;
+import Herencia.FiguraGeometricaVolumetrica;
+import Herencia.Rectangulo;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -34,13 +37,17 @@ public class NewServlet extends HttpServlet {
         Calculadora calculadora = new Calculadora();
         int resultado = calculadora.sumar(firstNumber, secondNumber);
         
-        if(resultado>100){
-            response.getWriter().println("<h1>El resultado de mayor a 100 : " + resultado+"</h1>");
-        }else{
-            response.getWriter().println("<h1>El resultado de menor a 100 : " + resultado+"</h1>");
-        }
         
-        //response.getWriter().println(resultado);
+        
+        
+        FiguraGeometricaVolumetrica fgv = new FiguraGeometricaVolumetrica();
+        Rectangulo rectangulo = new Rectangulo();
+        
+        rectangulo.getArea();
+        rectangulo.calcularArea(firstNumber, secondNumber);
+                
+                
+//response.getWriter().println(resultado);
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. 

@@ -1,7 +1,7 @@
 
 public class Calculadora {
     
-    public String nombreDeClase;
+    public String nombreDeClase; //ATRIBUTOS DE CLASE
     private int resultadoSuma;
     
     //METODO PUBLICO SUMAR
