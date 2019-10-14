@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>index</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -11,148 +12,13 @@
     <body>
         <script>
             $(document).ready(function(){
-                //$("#btnGuardar").click(function(){
-                    //alert("Ejemplo de jQuery")
-                   // $("#txtDPI").focus();
-               // })
-                
-                $("#txtNombre").focusout(function(){
-                    //alert($("#txtNombre").val());
-                });
-                
-                $("#txtApellido").focusout(function(){
-                    var nombre = $.trim($("#txtNombre").val());
-                    var apellido = $.trim($("#txtApellido").val());
-                    var usuario = nombre+apellido;
-                    $("#txtUsuario").val(usuario);
-                    $("#txtCorreo").focus();
-                });
-                
-                $("#btnMostrar").click(function(){
-                    //$("#mensajeExito").show();
-                    $("#mensajeExito").fadeIn(1000);
-                })
-                
-                $("#btnOcultar").click(function(){
-                    //$("#mensajeExito").remove();
-                    //$("#mensajeExito").hide();
-                   // $("#mensajeExito").fadeOut(1000);
-                })
-                
-                $("#btnAgregarElemento").click(function(){
-                    var elemento = '<input type="text" id="1">';
-                    
-                    $("#form1").append(elemento);
-                });
-                
-                $("#btnEliminarElemento").click(function(){
-                    //$("input > text").remove();
-                    $("input").remove();
-                });
-                
-                $("#btnGuardar").click(function(){
-                    $.ajax({
-                        type: "POST", //METODO POST
-                        url: "NewServlet", //URL DESTINO
-                        data: $("#form1").serialize(), 
-                        success: function(data)
-                        {
-                            //$("#txtResultado").val(data); 
-                             //$("#mensajeExito").html(data);
-                             $("#div-resultado").html(data);
-                            $("#mensajeExito").fadeIn(2000);
-                            $("#mensajeExito").fadeOut(2000);
-                        }
-                    });
-                });
-                
-                
-                
-                
+               $('.menuContainer').load('plantilla/menu.html');//para cargar la plantilla del menu principal  
+               $('.container').load('plantilla/slider.html');
             });            
         </script>
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-info shadow-sm p-2 rounded-bottom mb-5">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Calculadora
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="calculadoraBasica.jsp">Calculadora Báscia</a>
-                        <a class="dropdown-item" href="#">Calculadora Avanzada</a>
-                        <div class="dropdown-divider">Calculadora nueva</div>
-                      </div>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Disabled</a>
-                    </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                  </form>
-                </div>
-              </nav>
-        
-    <center>
-        <div style="width: 60%;">
-        <div>PROGRAMACION II - CLASE 1</div>
-        
-        <div class="alert alert-success" id="mensajeExito" role="alert" style="display: none;" >
-            Calculo registrado Exitosamente
-        </div>       
-        
-            <form action="NewServlet" id="form1" method="post" >
-                <select name="tipoCalculadora" class="form-control">
-                    <option > Selecione Opcion </option >
-                    <option value="1"> Básica </option >
-                    <option value="2" > Avanzada </option >
-                    <option value="3"> Otra </option >
-                </select><br>
-                
-                <select name="opcionCalculadora" class="form-control">
-                    <option > Selecione Opcion </option >
-                    <option value="1"> Sumar </option >
-                    <option value="2" > Restar </option >
-                    <option value="3"> Multiplicar </option >
-                </select>
-                <label>Ingrese Primer Numero</label><br>                
-                <input type="text" id="txtNombre" name="primerNumero" placeholder="Ingrese primer numero" class="form-control"/> <br> <br>
-                
-                <label>Ingrese Segundo Numero</label><br>
-                <input type="text" id="txtApellido" name="segundoNumero"  placeholder="Ingrese segundo numero"  class="form-control"/><br><br>
-                
-                <input type="button" id="btnGuardar" class="btn btn-primary" value="Guardar"><br>
-                
-                 <label>Resultado</label><br>
-                <input type="text" id="txtResultado" name="resultado"  placeholder="resultado"  class="form-control"/><br><br>
-                
-                <div id="div-resultado"></div>
-                       
-            <input type="button" id="btnMostrar" class="btn btn-dark" value="Mostrar Elemento">
-            
-            <input type="button" id="btnOcultar" class="btn btn-dark" value="Ocultar Elemento">
-            
-            <input type="button" id="btnAgregarElemento" class="btn btn-dark" value="Agregar Elemento">
-             <button id="btnEliminarElemento" class="btn btn-dark" >Eliminar Elemento</button>
-            
-            </form>
-            </div>
-       
-    </center>
-        </body>
+         <div class="menuContainer"></div>   
+         <div class="container"></div>       
+    
+    </body>
     
 </html>
